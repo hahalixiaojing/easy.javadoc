@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API列表</title>
+    <link href="/doc/resource/css/type.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/doc/resource/script/location.js"></script>
+</head>
+<body>
+<div id="el">
+    <table>
+        <caption>{{cls.description}}({{cls.name}})</caption>
+        <colgroup>
+            <col width="20">
+            <col width="20">
+            <col width="20">
+            <col width="20">
+            <col width="200">
+        </colgroup>
+        <thead>
+        <tr>
+            <td>字段名</td>
+            <td>类型</td>
+            <td>是否必填</td>
+            <td>默认值</td>
+            <td>说明</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="c in cls.fieldModels">
+            <td>{{c.name}}</td>
+            <td><a v-bind:href="c | href"><strong>{{c.typeName}}</strong></a></td>
+            <td>{{c.required}}</td>
+            <td>{{c.defaultValue}}</td>
+            <td>{{c.description}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/doc/resource/script/type.js"></script>
+</body>
+</html>

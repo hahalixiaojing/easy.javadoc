@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API列表</title>
+    <link href="/doc/resource/css/interface.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/doc/resource/script/location.js"></script>
+    <a id="top"></a>
+</head>
+<body>
+<div id="el">
+    <ul>
+        <li>接口目录
+            <ul>
+                <li v-for="interface in dir"><a v-bind:href="interface | anchor" v-on:click="hilight(interface)">{{interface.description}}({{interface.name}})</a></li>
+            </ul>
+        </li>
+    </ul>
+    <table v-for="interface in interfaces">
+        <caption><a :id="interface.name">{{interface.description}}({{interface.name}})</a><a href="#top">[top]</a></caption>
+        <colgroup>
+            <col width="600">
+            <col width="20">
+        </colgroup>
+        <thead>
+        <tr>
+            <td style="width: 70%">方法名称</td>
+            <td>返回值</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="method in interface.methodModels">
+            <td>
+                <div><span><a href="javascript:void(0)" v-on:click="go(method,interface)"><strong>{{method.name}}</strong></a>(<span
+                        v-for="(p,index) in method.parameterModels"><em
+                        v-if="index<method.parameterModels.length-1"><a v-bind:href="p | href"><strong>{{p | returnType}}</strong></a> {{p.name}},</em><em
+                        v-else><a v-bind:href="p | href"><strong>{{p.typeName}}</strong></a> {{p.name}}</em></span>)</span>
+                </div>
+                <div>{{method.description}}</div>
+            </td>
+            <td><a v-bind:href="method.returnModel | href"><strong>{{method.returnModel.typeName}}</strong></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="/doc/resource/script/interface.js"></script>
+</body>
+</html>
