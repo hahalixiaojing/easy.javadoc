@@ -7,7 +7,6 @@ public class FieldModel {
     private String description;
     private String defaultValue;
     private boolean isRequired;
-    private boolean isArray;
 
     public String getName() {
         return name;
@@ -47,14 +46,6 @@ public class FieldModel {
 
     public void setRequired(boolean required) {
         isRequired = required;
-    }
-
-    public boolean isArray() {
-        return isArray;
-    }
-
-    public void setArray(boolean array) {
-        isArray = array;
     }
 
     public String getTypeName() {

@@ -5,7 +5,6 @@ public class ReturnTypeModel {
     private String description;
     private String type;
     private String typeName;
-    private boolean isArray;
 
     public String getDescription() {
         return description;
@@ -22,15 +21,6 @@ public class ReturnTypeModel {
     public void setType(String type) {
         this.type = type;
     }
-
-    public boolean isArray() {
-        return isArray;
-    }
-
-    public void setArray(boolean array) {
-        isArray = array;
-    }
-
     public String getTypeName() {
         return typeName;
     }

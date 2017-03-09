@@ -8,7 +8,6 @@ public class ParameterModel {
     private String defaultValue;
     private String description;
     private boolean isRequired;
-    private boolean isArray;
 
     public String getName() {
         return name;
@@ -48,14 +47,6 @@ public class ParameterModel {
 
     public void setRequired(boolean required) {
         isRequired = required;
-    }
-
-    public boolean isArray() {
-        return isArray;
-    }
-
-    public void setArray(boolean array) {
-        isArray = array;
     }
 
     public String getTypeName() {

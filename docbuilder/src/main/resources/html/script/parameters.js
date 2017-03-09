@@ -1,10 +1,3 @@
-Vue.filter("type", function (value) {
-    var name = value.type.substring(value.type.lastIndexOf('.') + 1);
-    if (value.array && name.lastIndexOf("[]") == -1) {
-        return name + "[]";
-    }
-    return name;
-});
 Vue.filter("href", function (value) {
     return "type.html?type=" + value.type;
 });

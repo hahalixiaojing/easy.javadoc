@@ -26,7 +26,6 @@ public class MethodReturnTypeReslover {
             return returnTypeModel;
         } else {
             ReturnTypeModel returnTypeModel = new ReturnTypeModel();
-            returnTypeModel.setArray(returnType.isArray());
             returnTypeModel.setDescription(descriptor.description());
             if (returnType.isArray()) {
                 returnTypeModel.setType(returnType.getComponentType().getName());

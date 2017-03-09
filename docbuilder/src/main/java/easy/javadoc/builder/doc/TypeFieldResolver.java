@@ -1,5 +1,6 @@
 package easy.javadoc.builder.doc;
 
+import easy.javadoc.annotation.EnumDescriptor;
 import easy.javadoc.annotation.FieldDescriptor;
 import easy.javadoc.builder.model.FieldModel;
 
@@ -20,33 +21,55 @@ public class TypeFieldResolver {
 
         for (int i = 0; i < declaredFields.length; i++) {
             FieldDescriptor fieldDescriptor = declaredFields[i].getAnnotation(FieldDescriptor.class);
-
-            if (fieldDescriptor == null) {
-                continue;
-            }
-            FieldModel fieldModel = new FieldModel();
-            fieldModel.setName(declaredFields[i].getName());
-            fieldModel.setDefaultValue(fieldDescriptor.defaultValue());
-            fieldModel.setescription(fieldDescriptor.descripion());
-            fieldModel.setRequired(fieldDescriptor.isRequired());
-            fieldModel.setType(declaredFields[i].getType().getName());
-
-            if (declaredFields[i].getType().isArray()) {
-                String arrayTypeName = declaredFields[i].getType().getComponentType().getName();
-                String typeName = declaredFields[i].getType().getSimpleName();
-                fieldModel.setType(arrayTypeName);
-                fieldModel.setTypeName(typeName);
-                fieldModel.setArray(true);
+            if (fieldDescriptor != null) {
+                FieldModel fieldModel = this.getFieldDescriptor(fieldDescriptor, declaredFields[i]);
+                fieldModels.add(fieldModel);
             } else {
-                fieldModel.setArray(declaredFields[i].getType().isArray());
-                fieldModel.setTypeName(declaredFields[i].getType().getSimpleName());
+                EnumDescriptor enumDescriptor = declaredFields[i].getAnnotation(EnumDescriptor.class);
+                if (enumDescriptor != null) {
+                    FieldModel fieldModel = this.getEnumDescriptor(enumDescriptor, declaredFields[i]);
+                    fieldModels.add(fieldModel);
+                }
             }
-            fieldModels.add(fieldModel);
         }
 
         FieldModel[] fieldModels1 = this.loadAllFields(clazz.getSuperclass());
         fieldModels.addAll(Arrays.asList(fieldModels1));
 
         return fieldModels.toArray(new FieldModel[0]);
+    }
+
+    private FieldModel getEnumDescriptor(EnumDescriptor enumDescriptor, Field field) {
+        FieldModel fieldModel = new FieldModel();
+        fieldModel.setName(field.getName());
+        fieldModel.setDefaultValue("-");
+        fieldModel.setescription(enumDescriptor.descripion());
+        fieldModel.setType(field.getType().getName());
+
+        this.setArray(fieldModel, field);
+        return fieldModel;
+    }
+
+    private FieldModel getFieldDescriptor(FieldDescriptor fieldDescriptor, Field field) {
+        FieldModel fieldModel = new FieldModel();
+        fieldModel.setName(field.getName());
+        fieldModel.setDefaultValue(fieldDescriptor.defaultValue());
+        fieldModel.setescription(fieldDescriptor.descripion());
+        fieldModel.setRequired(fieldDescriptor.isRequired());
+        fieldModel.setType(field.getType().getName());
+
+        this.setArray(fieldModel, field);
+        return fieldModel;
+    }
+
+    private void setArray(FieldModel fieldModel, Field field) {
+        if (field.getType().isArray()) {
+            String arrayTypeName = field.getType().getComponentType().getName();
+            String typeName = field.getType().getSimpleName();
+            fieldModel.setType(arrayTypeName);
+            fieldModel.setTypeName(typeName);
+        } else {
+            fieldModel.setTypeName(field.getType().getSimpleName());
+        }
     }
 }

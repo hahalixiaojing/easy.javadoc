@@ -33,12 +33,10 @@ public class MethodParameterResolver {
                         String typeName = method.getParameterTypes()[paramIndex].getSimpleName();
                         parameterModel.setType(arrayTypeName);
                         parameterModel.setTypeName(typeName);
-                        parameterModel.setArray(true);
                     } else {
                         parameterModel.setType(method.getParameterTypes()[paramIndex].getName());
                         parameterModel.setTypeName(method.getParameterTypes()[paramIndex].getSimpleName());
                     }
-                    parameterModel.setArray(isArray);
                     parameterModels.add(parameterModel);
                     break;
                 }
