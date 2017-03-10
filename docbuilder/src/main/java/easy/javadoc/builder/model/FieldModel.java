@@ -7,6 +7,7 @@ public class FieldModel {
     private String description;
     private String defaultValue;
     private boolean isRequired;
+    private GenericTypeModel[] genericTypeModels;
 
     public String getName() {
         return name;
@@ -54,5 +55,13 @@ public class FieldModel {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public GenericTypeModel[] getGenericTypeModels() {
+        return genericTypeModels;
+    }
+
+    public void setGenericTypeModels(GenericTypeModel[] genericTypeModels) {
+        this.genericTypeModels = genericTypeModels;
     }
 }
