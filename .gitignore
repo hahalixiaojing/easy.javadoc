@@ -5,3 +5,5 @@
 /.idea
 /*.iml
 /settings.xml
+/web/target
+/web/web.iml
