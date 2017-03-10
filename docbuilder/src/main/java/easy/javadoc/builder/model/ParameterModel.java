@@ -8,6 +8,7 @@ public class ParameterModel {
     private String defaultValue;
     private String description;
     private boolean isRequired;
+    private GenericTypeModel[] genericTypeModels;
 
     public String getName() {
         return name;
@@ -55,5 +56,13 @@ public class ParameterModel {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public GenericTypeModel[] getGenericTypeModels() {
+        return genericTypeModels;
+    }
+
+    public void setGenericTypeModels(GenericTypeModel[] genericTypeModels) {
+        this.genericTypeModels = genericTypeModels;
     }
 }

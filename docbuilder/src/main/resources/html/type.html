@@ -33,8 +33,7 @@
             <td>{{c.name}}</td>
             <td><a v-bind:href="c | href"><strong>{{c.typeName}}</strong></a>
                 <strong v-if="c.genericTypeModels.length>0">
-                    &lt;<a v-for="(g,index) in c.genericTypeModels" v-bind:href="g | href">{{g.typeName}}<span v-if="index<c.genericTypeModels.length-1">,</span></a>
-                    &gt;
+                    &lt;<a v-for="(g,index) in c.genericTypeModels" v-bind:href="g | href">{{g.typeName}}<span v-if="index<c.genericTypeModels.length-1">,</span></a>&gt;
                 </strong>
 
             </td>

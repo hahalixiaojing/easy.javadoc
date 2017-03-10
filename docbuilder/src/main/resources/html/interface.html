@@ -14,12 +14,14 @@
     <ul>
         <li>接口目录
             <ul>
-                <li v-for="interface in dir"><a v-bind:href="interface | anchor" v-on:click="hilight(interface)">{{interface.description}}({{interface.name}})</a></li>
+                <li v-for="interface in dir"><a v-bind:href="interface | anchor" v-on:click="hilight(interface)">{{interface.description}}({{interface.name}})</a>
+                </li>
             </ul>
         </li>
     </ul>
     <table v-for="interface in interfaces">
-        <caption><a :id="interface.name">{{interface.description}}({{interface.name}})</a><a href="#top">[top]</a></caption>
+        <caption><a :id="interface.name">{{interface.description}}({{interface.name}})</a><a href="#top">[top]</a>
+        </caption>
         <colgroup>
             <col width="600">
             <col width="20">
@@ -33,10 +35,16 @@
         <tbody>
         <tr v-for="method in interface.methodModels">
             <td>
-                <div><span><a href="javascript:void(0)" v-on:click="go(method,interface)"><strong>{{method.name}}</strong></a>(<span
-                        v-for="(p,index) in method.parameterModels"><em
-                        v-if="index<method.parameterModels.length-1"><a v-bind:href="p | href"><strong>{{p | returnType}}</strong></a> {{p.name}},</em><em
-                        v-else><a v-bind:href="p | href"><strong>{{p.typeName}}</strong></a> {{p.name}}</em></span>)</span>
+                <div><span>
+                    <a href="javascript:void(0)" v-on:click="go(method,interface)"><strong>{{method.name}}</strong></a>
+                    (<span
+                        v-for="(p,index) in method.parameterModels">
+                    <a v-bind:href="p | href"><strong>{{p | returnType}}</strong></a>
+                    <span v-if="p.genericTypeModels.length>0">
+                        &lt;<a v-for="(g,i) in p.genericTypeModels" v-bind:href="g | href">{{g.typeName}}<span v-if="i<p.genericTypeModels.length-1">,</span></a>&gt;
+                    </span>{{p.name}}
+                    <em v-if="index<method.parameterModels.length-1">,</em>
+                    </span>)</span>
                 </div>
                 <div>{{method.description}}</div>
             </td>

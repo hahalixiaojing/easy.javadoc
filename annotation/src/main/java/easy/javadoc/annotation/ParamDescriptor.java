@@ -16,4 +16,7 @@ public @interface ParamDescriptor {
     boolean isRequired() default false;
 
     String defaultValue() default "";
+
+    Class<?>[] genericTypes() default {};
+
 }

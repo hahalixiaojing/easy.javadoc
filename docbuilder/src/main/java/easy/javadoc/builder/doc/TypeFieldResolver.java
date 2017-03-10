@@ -58,27 +58,9 @@ public class TypeFieldResolver {
         fieldModel.setescription(fieldDescriptor.descripion());
         fieldModel.setRequired(fieldDescriptor.isRequired());
         fieldModel.setType(field.getType().getName());
-        fieldModel.setGenericTypeModels(this.genericTypeModels(fieldDescriptor));
+        fieldModel.setGenericTypeModels(GenericTypeReslover.genericTypeModels(fieldDescriptor.genericTypes()));
         this.setArray(fieldModel, field);
         return fieldModel;
-    }
-
-    private GenericTypeModel[] genericTypeModels(FieldDescriptor fieldDescriptor) {
-        GenericTypeModel[] genericTypeModels = new GenericTypeModel[fieldDescriptor.genericTypes().length];
-
-        int i = 0;
-        for (Class<?> type : fieldDescriptor.genericTypes()) {
-
-            GenericTypeModel genericTypeModel = new GenericTypeModel();
-            genericTypeModel.setTypeName(type.getSimpleName());
-            genericTypeModel.setType(type.getName());
-
-            genericTypeModels[i] = genericTypeModel;
-
-            i++;
-        }
-        return genericTypeModels;
-
     }
 
     private void setArray(FieldModel fieldModel, Field field) {

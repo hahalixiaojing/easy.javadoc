@@ -36,7 +36,7 @@ public class DocumentServletDispatcher {
 
                 } catch (Exception e) {
                     response.setContentType("text/html;chartset=utf-8");
-                    response.getWriter().write(e.getMessage());
+                    response.getWriter().write(e.getMessage() == null ? "" : e.getMessage());
                 }
                 response.flushBuffer();
                 break;

@@ -1,8 +1,11 @@
 package easy.javadoc.builder.doc;
 
+import easy.javadoc.annotation.FieldDescriptor;
 import easy.javadoc.annotation.ParamDescriptor;
+import easy.javadoc.builder.model.GenericTypeModel;
 import easy.javadoc.builder.model.ParameterModel;
 
+import javax.management.Descriptor;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class MethodParameterResolver {
                     parameterModel.setName(paramDescriptor.name());
                     parameterModel.setRequired(paramDescriptor.isRequired());
                     parameterModel.setDefaultValue(paramDescriptor.defaultValue());
+                    parameterModel.setGenericTypeModels(GenericTypeReslover.genericTypeModels(paramDescriptor.genericTypes()));
 
                     boolean isArray = method.getParameterTypes()[paramIndex].isArray();
                     if (isArray) {
