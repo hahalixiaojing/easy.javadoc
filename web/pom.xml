@@ -99,12 +99,12 @@
         <dependency>
             <groupId>easy</groupId>
             <artifactId>easy-javadoc-docbuilder</artifactId>
-            <version>1.1.4</version>
+            <version>1.1.5</version>
         </dependency>
         <dependency>
             <groupId>easy</groupId>
             <artifactId>easy-javadoc-annotation</artifactId>
-            <version>1.0.7</version>
+            <version>1.0.8</version>
         </dependency>
     </dependencies>
     <build>

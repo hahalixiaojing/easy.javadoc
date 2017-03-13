@@ -7,7 +7,7 @@ public class FieldModel {
     private String description;
     private String defaultValue;
     private boolean isRequired;
-    private GenericTypeModel[] genericTypeModels;
+    private GenericTypeModel[] genericTypeModels = new GenericTypeModel[0];
 
     public String getName() {
         return name;

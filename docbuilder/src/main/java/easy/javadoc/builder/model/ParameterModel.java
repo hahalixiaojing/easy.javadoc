@@ -8,7 +8,7 @@ public class ParameterModel {
     private String defaultValue;
     private String description;
     private boolean isRequired;
-    private GenericTypeModel[] genericTypeModels;
+    private GenericTypeModel[] genericTypeModels = new GenericTypeModel[0];
 
     public String getName() {
         return name;
