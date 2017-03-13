@@ -5,6 +5,8 @@ public class ReturnTypeModel {
     private String description;
     private String type;
     private String typeName;
+    private GenericTypeModel[] genericTypeModels;
+
 
     public String getDescription() {
         return description;
@@ -27,5 +29,13 @@ public class ReturnTypeModel {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public GenericTypeModel[] getGenericTypeModels() {
+        return genericTypeModels;
+    }
+
+    public void setGenericTypeModels(GenericTypeModel[] genericTypeModels) {
+        this.genericTypeModels = genericTypeModels;
     }
 }

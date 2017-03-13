@@ -13,4 +13,6 @@ public @interface ReturnDescriptor {
     String description() default "";
 
     Class<?> returnType() default Void.class;
+
+    Class<?>[] genericTypes() default {};
 }

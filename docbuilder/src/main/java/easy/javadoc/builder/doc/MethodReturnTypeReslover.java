@@ -2,13 +2,14 @@ package easy.javadoc.builder.doc;
 
 
 import easy.javadoc.annotation.ReturnDescriptor;
+import easy.javadoc.builder.model.GenericTypeModel;
 import easy.javadoc.builder.model.ReturnTypeModel;
 
 import java.lang.reflect.Method;
 
 public class MethodReturnTypeReslover {
 
-    public ReturnTypeModel getMethodReturnType(Method m) throws Exception{
+    public ReturnTypeModel getMethodReturnType(Method m) throws Exception {
         ReturnDescriptor descriptor = m.getAnnotation(ReturnDescriptor.class);
 
         Class<?> returnType = null;
@@ -23,10 +24,12 @@ public class MethodReturnTypeReslover {
             returnTypeModel.setDescription("无返回值");
             returnTypeModel.setType("void");
             returnTypeModel.setTypeName("void");
+            returnTypeModel.setGenericTypeModels(new GenericTypeModel[0]);
             return returnTypeModel;
         } else {
             ReturnTypeModel returnTypeModel = new ReturnTypeModel();
             returnTypeModel.setDescription(descriptor.description());
+            returnTypeModel.setGenericTypeModels(GenericTypeReslover.genericTypeModels(descriptor.genericTypes()));
             if (returnType.isArray()) {
                 returnTypeModel.setType(returnType.getComponentType().getName());
                 returnTypeModel.setTypeName(returnType.getSimpleName());

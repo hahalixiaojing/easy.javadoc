@@ -2,6 +2,7 @@ package easy.javadoc.web.test;
 
 
 import easy.javadoc.annotation.*;
+import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 
 @TypeDescriptor(description = "获得测数据接口")
 public interface ITestInterface2 {
@@ -24,4 +25,7 @@ public interface ITestInterface2 {
     @MethodDescriptor(description = "测试返回列表")
     @ReturnDescriptor(description = "返回testModelArray")
     TestModel[] testModel3();
+    @MethodDescriptor(description = "测试泛型返回结果")
+    @ReturnDescriptor(description = "测试泛型返回结果",genericTypes = {TestModel.class})
+    Result<TestModel> test4();
 }

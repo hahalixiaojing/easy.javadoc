@@ -41,14 +41,22 @@
                         v-for="(p,index) in method.parameterModels">
                     <a v-bind:href="p | href"><strong>{{p | returnType}}</strong></a>
                     <span v-if="p.genericTypeModels.length>0">
-                        &lt;<a v-for="(g,i) in p.genericTypeModels" v-bind:href="g | href">{{g.typeName}}<span v-if="i<p.genericTypeModels.length-1">,</span></a>&gt;
+                        &lt;<a v-for="(g,i) in p.genericTypeModels" v-bind:href="g | href"><strong>{{g.typeName}}</strong><span
+                            v-if="i<p.genericTypeModels.length-1">,</span></a>&gt;
                     </span>{{p.name}}
                     <em v-if="index<method.parameterModels.length-1">,</em>
                     </span>)</span>
+                    <span v-if="method.throwsException.length>0">
+                        throws
+                        <em v-for="(e,ind) in method.throwsException">{{e}}</em>
+                    </span>
                 </div>
                 <div>{{method.description}}</div>
             </td>
-            <td><a v-bind:href="method.returnModel | href"><strong>{{method.returnModel.typeName}}</strong></a></td>
+            <td><a v-bind:href="method.returnModel | href"><strong>{{method.returnModel.typeName}}</strong></a>
+                <span v-if="method.returnModel.genericTypeModels.length>0">&lt;<a v-for="(g,i) in method.returnModel.genericTypeModels" v-bind:href="g | href"><strong>{{g.typeName}}</strong></a><em v-if="i<method.returnModel.genericTypeModels.length-1">,</em>&gt;
+                </span>
+            </td>
         </tr>
         </tbody>
     </table>
