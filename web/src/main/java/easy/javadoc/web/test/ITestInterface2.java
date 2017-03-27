@@ -2,7 +2,6 @@ package easy.javadoc.web.test;
 
 
 import easy.javadoc.annotation.*;
-import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 
 @TypeDescriptor(description = "获得测数据接口")
 public interface ITestInterface2 {
