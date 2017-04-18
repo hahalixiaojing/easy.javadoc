@@ -2,6 +2,7 @@ package easy.javadoc.web;
 
 import easy.javadoc.builder.http.BasePackage;
 import easy.javadoc.builder.http.DocumentApiServlet;
+import easy.javadoc.web.websocket.WebSocketConfig;
 import org.slf4j.Logger;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +19,7 @@ import java.util.List;
 
 
 @Configuration
-@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class})
+@EnableAutoConfiguration(exclude = {ErrorMvcAutoConfiguration.class, WebSocketConfig.class})
 @ComponentScan
 public class App {
     public static void main(String[] args) {

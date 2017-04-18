@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>easy</groupId>
     <artifactId>easy-javadoc-docbuilder</artifactId>
-    <version>1.1.5</version>
+    <version>1.1.6</version>
     <dependencies>
         <dependency>
             <groupId>easy</groupId>

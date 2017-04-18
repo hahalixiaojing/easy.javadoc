@@ -39,7 +39,7 @@
                     <a href="javascript:void(0)" v-on:click="go(method,interface)"><strong>{{method.name}}</strong></a>
                     (<span
                         v-for="(p,index) in method.parameterModels">
-                    <a v-bind:href="p | href"><strong>{{p | returnType}}</strong></a>
+                    <a v-bind:href="p | href"><strong>{{p.typeName}}</strong></a>
                     <span v-if="p.genericTypeModels.length>0">
                         &lt;<a v-for="(g,i) in p.genericTypeModels" v-bind:href="g | href"><strong>{{g.typeName}}</strong><span
                             v-if="i<p.genericTypeModels.length-1">,</span></a>&gt;

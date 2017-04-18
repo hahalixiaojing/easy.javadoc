@@ -46,6 +46,7 @@ public class TypeFieldResolver {
         fieldModel.setDefaultValue("-");
         fieldModel.setescription(enumDescriptor.descripion());
         fieldModel.setType(field.getType().getName());
+        fieldModel.setGenericTypeModels(new GenericTypeModel[0]);
 
         this.setArray(fieldModel, field);
         return fieldModel;
